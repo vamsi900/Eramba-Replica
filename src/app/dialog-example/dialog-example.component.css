@@ -1,0 +1,39 @@
+.small{
+    color: grey;
+}
+
+.input-field{
+    margin-left: 13px;
+}
+.add-btn{
+    margin-left: 5px;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 450px;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.btn-div{
+    float: right;
+}
+
+.assets-dropdown-toggle{
+    display: block;
+    width: 100%;
+    background-color: #f2f2f2f2;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    float: left;
+}
+
+.asset-dropdown{
+    width: 100%;
+}
+
+
+.caret{
+    float: right;
+}

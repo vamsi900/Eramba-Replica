@@ -1,0 +1,136 @@
+.main-div{
+    margin-left: 4%;
+}
+
+.mat-elevation-z8{
+    width: 100%;
+}
+
+.main3{
+    height: 40px;
+}
+
+.heading{
+    margin-bottom: 0px;
+}
+
+.small{
+    color: grey;
+    padding-top: 2px;
+}
+
+.heading-div{
+    margin-left: 20px;
+}
+
+.hr-top{
+    margin-bottom: 0px;
+}
+
+.hr-bottom{
+    margin-top: 0px;
+}
+
+.text-link{
+    font-size: 15px;
+    font-weight: 400;
+    color: black;
+}
+
+.slash{
+    font-size: 15px;
+    color: black;
+    font-weight: 400;
+}
+
+.background{
+    background-color: #f2f2f2f2;
+}
+
+.all-items{
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.results{
+    margin-bottom: 10px;
+}
+
+.card{
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 20px;
+}
+
+.card-header{
+    background-color: white;
+}
+
+.btn{
+    padding: 0px;
+    margin-left: 3px;   
+    margin-bottom: 10px;
+}
+
+.btn-text{
+    font-weight: 200;
+}
+
+.filter{
+    float: left;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.filter-text{
+    margin-bottom: 0px;
+}
+
+.add-btn{
+    width: 100%;
+    height: 100%;
+}
+
+.actions-dropdown{
+    position: absolute;
+    left: 80%;
+}
+
+.actions-dropdown-toggle{
+    margin-bottom: 0px;
+}
+
+.dropdown-items{
+    font-size: 14px;
+    font-weight: 100px;
+    margin-left: 3px;
+    padding: 3px;
+    /* float: left; */
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dropdown-items:hover{
+    background-color: #f2f2f2f2;
+}
+
+.icon-align{
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
+.status-dropdown{
+    background: rgb(247, 181, 58);
+}
+
+.status-dropdown-span{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+}
