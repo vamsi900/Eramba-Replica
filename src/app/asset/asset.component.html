@@ -7,126 +7,113 @@
     <div class="toolbar-div">
       <hr class="hr-top"> 
       <mat-toolbar class="main3">
-      <i class="material-icons">home</i>
-      <a class="text-link" href="#">Dashboard</a><span class="slash">/</span><a class="text-link" href="#">Internal Controls</a><span class="slash">/</span><a class="text-link" href="#">Default Index</a>
+        <i class="material-icons">home</i>
+        <a class="text-link" href="#">Dashboard</a><span class="slash">/</span><a class="text-link" href="#">Internal Controls</a><span class="slash">/</span><a class="text-link" href="#">Default Index</a>
 
-  <!-- <button mat-button class="actions-dropdown" [matMenuTriggerFor]="Lazy">Actions<i class="material-icons">expand_more</i></!-->
-    <!-- <mat-menu #Lazy="matMenu">
-        <ng-template matMenuContent let-name="name" let-hobby="hobby">
-          <button  mat-raised-button class="add-btn" (click)="openDialog()">+Add</button>
-        </ng-template>
-    </mat-menu> -->
-
-    <div class="dropdown actions-dropdown">
-        <button class="btn dropdown-toggle actions-dropdown-toggle" type="button" data-toggle="dropdown">Actions
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li (click)="openDialog()" class="dropdown-items"><i class="material-icons icon-align">add</i>Add</li>
-          <li class="dropdown-items"><i class="material-icons icon-align">playlist_add</i>Import</li>
-        </ul>
+        <div class="dropdown actions-dropdown">
+            <button class="btn dropdown-toggle actions-dropdown-toggle" type="button" data-toggle="dropdown">Actions
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li (click)="openDialog()" class="dropdown-items"><i class="material-icons icon-align">add</i>Add</li>
+              <li class="dropdown-items"><i class="material-icons icon-align">playlist_add</i>Import</li>
+            </ul>
+        </div>
+      </mat-toolbar>
+      <hr class="hr-bottom">
     </div>
-  </mat-toolbar>
-  <hr class="hr-bottom">
+
   </div>
 
-</div>
+  <div class="background">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="all-items">All Items</h4>
+        <p class="results">10 Results - Filter that shows everything</p>
+      </div>
 
-<div class="background">
-<div class="card">
-  <div class="card-header">
-  <h4 class="all-items">All Items</h4>
-  <p class="results">10 Results - Filter that shows everything</p>
+      <div class="card-body">
+        <div class="example-button-row" >
+        <button type="button" class="btn btn-info btn-sm"><span class="btn-text">LIMIT IS UNLIMITED</span></button>
+        <button type="button" class="btn btn-info btn-sm"><span class="btn-text">ORDER BY CREATED</span></button>
+        <button type="button" class="btn btn-info btn-sm"><span class="btn-text">SORT IS DESCENDING</span></button>
+        </div>
+        <br>
+
+        <div class="filter row">
+          <p class="filter-text">Filter: </p><input placeholder="Type to filter..." type="text" style="margin:15px;float: right;width: auto;" [(ngModel)]="searchKeyword"class="form-control">
+        </div>
+      </div>
+
+      <table mat-table [dataSource]="contacts" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()"
+                          [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)"
+                          [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element"><button class="status-dropdown"><span class="status-dropdown-span">REVIEW EXPIRED<i class="material-icons">keyboard_arrow_down</i></span></button> </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="reviews">
+          <th mat-header-cell *matHeaderCellDef> Reviews </th>
+          <td mat-cell *matCellDef="let element"> <span class="status-dropdown-span">2<i class="material-icons">keyboard_arrow_down</i></span></td>
+        </ng-container>
+      
+        <ng-container matColumnDef="related_business_units">
+          <th mat-header-cell *matHeaderCellDef> Related Business Units </th>
+          <td mat-cell *matCellDef="let element"> {{element.unit}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef> Description </th>
+          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="label">
+          <th mat-header-cell *matHeaderCellDef> Label </th>
+          <td mat-cell *matCellDef="let element"> {{element.label}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> Type </th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="liabilities">
+          <th mat-header-cell *matHeaderCellDef> Liabilities </th>
+          <td mat-cell *matCellDef="let element"> {{element.liability}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+        </tr>
+      </table>
+
+    </div>
   </div>
-
-  <div class="card-body">
-  <div class="example-button-row" >
-    <button type="button" class="btn btn-info btn-sm"><span class="btn-text">LIMIT IS UNLIMITED</span></button>
-    <button type="button" class="btn btn-info btn-sm"><span class="btn-text">ORDER BY CREATED</span></button>
-    <button type="button" class="btn btn-info btn-sm"><span class="btn-text">SORT IS DESCENDING</span></button>
-  </div>
-  <br>
-
-  <div class="filter row">
-      <p class="filter-text">Filter: </p><input placeholder="Type to filter..." type="text" style="margin:15px;float: right;width: auto;" [(ngModel)]="searchKeyword"class="form-control">
-  </div>
-  </div>
-  <ul *ngFor="let contact of contacts">
-    <li>
-      {{contact.unit}}-{{contact.name}}-{{contact.description}}-{{contact.label}}-{{contact.type}}-{{contact.asset}}-{{contact.liability}}
-    </li>
-  </ul>
-
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!-- Checkbox Column -->
-    <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-checkbox (change)="$event ? masterToggle() : null"
-                      [checked]="selection.hasValue() && isAllSelected()"
-                      [indeterminate]="selection.hasValue() && !isAllSelected()"
-                      [aria-label]="checkboxLabel()">
-        </mat-checkbox>
-      </th>
-      <td mat-cell *matCellDef="let row">
-        <mat-checkbox (click)="$event.stopPropagation()"
-                      (change)="$event ? selection.toggle(row) : null"
-                      [checked]="selection.isSelected(row)"
-                      [aria-label]="checkboxLabel(row)">
-        </mat-checkbox>
-      </td>
-    </ng-container>
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> Actions </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
-      <td mat-cell *matCellDef="let element"><button class="status-dropdown"><span class="status-dropdown-span">{{element.name}}<i class="material-icons">keyboard_arrow_down</i></span></button> </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Reviews </th>
-      <td mat-cell *matCellDef="let element"> <span class="status-dropdown-span">{{element.weight}}<i class="material-icons">keyboard_arrow_down</i></span></td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Related Business Units </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="label">
-      <th mat-header-cell *matHeaderCellDef> Label </th>
-      <td mat-cell *matCellDef="let element"> {{element.label}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef> Type </th>
-      <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="liabilities">
-      <th mat-header-cell *matHeaderCellDef> Liabilities </th>
-      <td mat-cell *matCellDef="let element"> {{element.liabilities}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-        (click)="selection.toggle(row)">
-    </tr>
-  </table>
-
-</div>
-</div>
 
 </div>

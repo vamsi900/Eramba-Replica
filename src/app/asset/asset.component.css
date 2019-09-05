@@ -126,11 +126,14 @@
 
 .status-dropdown{
     background: rgb(247, 181, 58);
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
 }
 
 .status-dropdown-span{
     display:flex;
     flex-direction: row;
     align-items: center;
-    color: white;
 }
