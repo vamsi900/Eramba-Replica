@@ -1,5 +1,8 @@
 .main-div{
-    margin-left: 4%;
+    /* margin-left: 52px; */
+    position: relative;
+    margin-left: 55px;
+    margin-top: 30px;
 }
 
 .mat-elevation-z8{
@@ -12,6 +15,14 @@
 
 .heading{
     margin-bottom: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.asset-title{
+    margin-left: 7px;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .small{
@@ -23,8 +34,13 @@
     margin-left: 20px;
 }
 
+.main3{
+    background-color: white;
+}
+
 .hr-top{
     margin-bottom: 0px;
+    margin-top: 40px;
 }
 
 .hr-bottom{
@@ -32,13 +48,14 @@
 }
 
 .text-link{
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 400;
     color: black;
+    
 }
 
 .slash{
-    font-size: 15px;
+    font-size: 13px;
     color: black;
     font-weight: 400;
 }
@@ -67,14 +84,18 @@
     background-color: white;
 }
 
-.btn{
-    padding: 0px;
+.btn-sm{
+    padding: 3px;
     margin-left: 3px;   
     margin-bottom: 10px;
 }
 
 .btn-text{
-    font-weight: 200;
+    font-weight: 400;
+    padding: 5px;
+    font-size: 10px;
+    background-color: #19BCD4;
+    color: white;
 }
 
 .filter{
@@ -97,11 +118,13 @@
 
 .actions-dropdown{
     position: absolute;
-    left: 80%;
+    right: 20%;
 }
 
 .actions-dropdown-toggle{
     margin-bottom: 0px;
+    font-size: 13px;
+    font-weight: 400;
 }
 
 .dropdown-items{
@@ -125,15 +148,27 @@
 }
 
 .status-dropdown{
-    background: rgb(247, 181, 58);
+    background-color: #F0AD4E;
     display:flex;
+    width: 113px;
     flex-direction: row;
     align-items: center;
     color: white;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    padding-left: 3px;
 }
 
 .status-dropdown-span{
+    font-size: 11px;
+    font-weight: 400;
     display:flex;
     flex-direction: row;
     align-items: center;
+}
+
+.dropdown-menu{
+    left: 0;
+    right: auto;
 }

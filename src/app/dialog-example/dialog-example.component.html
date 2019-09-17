@@ -72,7 +72,7 @@
       </div>
     <hr>
     <div class="btn-div">
-      <button class="btn" style="margin: 10px">Close</button>
+      <button class="btn" style="margin: 10px" type="button" data-dismiss="modal" (click)="cancel()">Close</button>
       <button class="btn btn-primary" style="margin: 10px" type="submit">Save</button>
     </div>
     </form>
@@ -149,8 +149,8 @@
         </div>
         <hr>
         <div class="btn-div">
-            <button class="btn" style="margin: 10px" data-dismiss="modal">Close</button>
             <button class="btn btn-primary" style="margin: 10px" (click)="onAddServer($event)">Save</button>
+            <button class="btn" style="margin: 10px" data-dismiss="modal" type="button">Close</button> 
         </div>
   </mat-tab>
 </mat-tab-group>

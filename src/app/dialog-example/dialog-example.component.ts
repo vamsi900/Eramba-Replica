@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-example',
@@ -11,7 +12,7 @@ export class DialogExampleComponent implements OnInit {
   label: any;
 
 
-  constructor(private dataservice: DataService) { 
+  constructor(private dataservice: DataService,) { 
   }
   businessUnits: any = ['Finance', 'Human Resources','Technology','Sales','Product','Customer Support'];
   Label: any = ['Confidential to the organisation', 'BI Tool'];
@@ -37,6 +38,11 @@ export class DialogExampleComponent implements OnInit {
   onSubmit(){
     console.log(this.generalForm.value);
     this.dataservice.addBusinessData(this.generalForm.value);
+    this.generalForm.reset();
+  }
+
+  cancel(){
+    // this.dialogRef.close();
   }
 
 

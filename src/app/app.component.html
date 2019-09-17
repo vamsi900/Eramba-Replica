@@ -1,44 +1,61 @@
-<div id="viewport">
-        <!-- Sidebar -->
-        <div id="sidebar">
-          <header>
-            <a href="#">Logo</a>
-          </header>
-          <ul class="nav">
-            <li>
-              <a href="#">
-                <i class="material-icons">dashboard</i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="material-icons">people</i>
-              </a>
-            </li>
-            <li>
-              <a href="/asset">
-                <i class="material-icons">home</i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="material-icons">event_available</i>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <!-- Content -->
-        <div id="content">
-          <nav class="navbar navbar-default">
-            <div class="container-fluid">
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
+    <div id="viewport">
+           
+            <div id="sidebar">
+              <li class="nav">
+                <ul>
+                  <a href="#">
+                    <i class="material-icons sidebar-icons">dashboard</i>
                   </a>
-                </li>
-              </ul>
+                </ul>
+                <ul>
+                  <a href="#">
+                    <i class="material-icons sidebar-icons">people</i>
+                  </a>
+                </ul>
+                <ul>
+                  <a routerLink="/asset">
+                    <i class="material-icons sidebar-icons">home</i>
+                  </a>
+                </ul>
+                <ul>
+                  <a href="#">
+                    <i class="material-icons sidebar-icons">event_available</i>
+                  </a>
+                </ul>
+              </li>
             </div>
-          </nav>
-        </div>
-</div>
+            
+            <div id="content">
+              <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li>
+                      <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+    </div>
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"><img src="../assets/eramba.png"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Asset Identification <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <i class="material-icons navbar-icons">chat</i>
+      </div>
+    </nav>
+
+    
 <router-outlet></router-outlet>
