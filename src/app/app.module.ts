@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import { AssetComponent } from './asset/asset.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import { HttpClientModule } from '@angular/common/http';
 import { 
          MatSidenavModule,
          MatToolbarModule,
@@ -23,12 +23,14 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatSortModule} from '@angular/material/sort';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     AssetComponent,
-    DialogExampleComponent
+    DialogExampleComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatCardModule,
     MatDialogModule,ReactiveFormsModule,
     FormsModule,
-    MatTabsModule
+    MatTabsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

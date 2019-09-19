@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dialog-example',
@@ -12,7 +12,7 @@ export class DialogExampleComponent implements OnInit {
   label: any;
 
 
-  constructor(private dataservice: DataService,) { 
+  constructor(private dataservice: DataService, private router:Router) { 
   }
   businessUnits: any = ['Finance', 'Human Resources','Technology','Sales','Product','Customer Support'];
   Label: any = ['Confidential to the organisation', 'BI Tool'];
@@ -28,17 +28,20 @@ export class DialogExampleComponent implements OnInit {
     label: new FormControl(''),
     type: new FormControl(''),
     asset: new FormControl(''),
-    liability: new FormControl(''),
-    // date: new FormControl('')
+    liability: new FormControl('')
   });
 
   ngOnInit() {
   } 
 
   onSubmit(){
-    console.log(this.generalForm.value);
-    this.dataservice.addBusinessData(this.generalForm.value);
+    // console.log(this.generalForm.value);
+    this.dataservice.addBusinessData(this.generalForm.value).subscribe(data => {
+      return data;
+    });
     this.generalForm.reset();
+    // this.router.navigate(['/asset']);
+    window.location.reload();
   }
 
   cancel(){

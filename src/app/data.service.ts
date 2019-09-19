@@ -1,26 +1,38 @@
 import { Injectable } from '@angular/core';
-import{ Contact } from '../app/contact.model';
-import { Subject } from 'rxjs';
+import{ Asset } from '../app/asset.model';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  constructor(){}
-  private contacts: Contact[] = [];
-  private contactsUpdated = new Subject<Contact[]>();
+  constructor(private http:HttpClient){}
+  private assets: Asset[] = [];
+  private assetsUpdated = new Subject<Asset[]>();
+
+  getAssetUpdateListener(){
+    return this.assetsUpdated.asObservable();
+  }
   
-  addBusinessData(formData){
-    const contact: Contact  = {unit: formData.unit,name: formData.name, description: formData.description,label: formData.label,type: formData.type,asset: formData.asset,liability: formData.liability};
-    this.contacts.push(contact);
-    this.contactsUpdated.next([...this.contacts]);
+  addBusinessData(data:any):Observable<any>{
+    // const asset: Asset  = {unit: formData.unit,name: formData.name, description: formData.description,label: formData.label,type: formData.type,asset: formData.asset,liability: formData.liability};
+    // this.assets.push(asset);
+    // this.assetsUpdated.next([...this.assets]);
+    console.log(data);
+    return this.http.post("http://localhost:3000/postAsset",data);
   }
 
-  getContacts(){
-    return [...this.contacts];
+  getAssets():Observable<any>{
+    return this.http.get("http://localhost:3000/getAsset");
+    // return [...this.assets];
   }
 
-  getContactUpdateListener(){
-    return this.contactsUpdated.asObservable();
-  }
+  deleteAsset(data:any):Observable<any>{
+    return this.http.delete(`http://localhost:3000/deleteAsset/${data._id}`);
+  };
+    
+  updateAsset(data:any):Observable<any>{
+    return this.http.put('http://localhost:3000/editAsset',data)
+  };
 }
