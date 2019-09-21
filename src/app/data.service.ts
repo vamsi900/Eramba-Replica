@@ -19,7 +19,7 @@ export class DataService {
     // const asset: Asset  = {unit: formData.unit,name: formData.name, description: formData.description,label: formData.label,type: formData.type,asset: formData.asset,liability: formData.liability};
     // this.assets.push(asset);
     // this.assetsUpdated.next([...this.assets]);
-    console.log(data);
+    // console.log(data);
     return this.http.post("http://localhost:3000/postAsset",data);
   }
 
@@ -29,6 +29,7 @@ export class DataService {
   }
 
   deleteAsset(data:any):Observable<any>{
+    // console.log('success from service');
     return this.http.delete(`http://localhost:3000/deleteAsset/${data._id}`);
   };
     

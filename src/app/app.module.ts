@@ -24,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatSortModule} from '@angular/material/sort';
 import { SearchPipe } from './search.pipe';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SearchPipe } from './search.pipe';
     MatDialogModule,ReactiveFormsModule,
     FormsModule,
     MatTabsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

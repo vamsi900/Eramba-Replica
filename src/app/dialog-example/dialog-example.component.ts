@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-example',
@@ -9,11 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./dialog-example.component.css']
 })
 export class DialogExampleComponent implements OnInit {
-  label: any;
+  // label: any;
 
 
-  constructor(private dataservice: DataService, private router:Router) { 
+  constructor(private dataservice: DataService, private router:Router, public dialogRef: MatDialogRef<DialogExampleComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { 
+
   }
+
   businessUnits: any = ['Finance', 'Human Resources','Technology','Sales','Product','Customer Support'];
   Label: any = ['Confidential to the organisation', 'BI Tool'];
   Type: any = ['Data Asset', 'Facilities', 'People', 'Hardware', 'Software', 'IT Service', 'Network'];
@@ -35,17 +40,15 @@ export class DialogExampleComponent implements OnInit {
   } 
 
   onSubmit(){
-    // console.log(this.generalForm.value);
     this.dataservice.addBusinessData(this.generalForm.value).subscribe(data => {
       return data;
     });
     this.generalForm.reset();
-    // this.router.navigate(['/asset']);
     window.location.reload();
   }
 
-  cancel(){
-    // this.dialogRef.close();
+  onNoClick(){
+    this.dialogRef.close();
   }
 
 

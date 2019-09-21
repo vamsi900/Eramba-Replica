@@ -11,7 +11,6 @@ router.post('/postAsset', function(req, res, next) {
 
     var asset = new Asset(req.body)
     
-    console.log('hi');
     asset.save((err,data) => {
         if(err){
             res.send(err);

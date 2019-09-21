@@ -23,7 +23,8 @@
               Actions
             </p>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li (click)="openDialog()" class="dropdown-items"><i class="material-icons icon-align">add</i>Add</li>
+              <!-- <li (click)="openDialog()" class="dropdown-items"><i class="material-icons icon-align">add</i>Add</li> -->
+              <li data-toggle="modal" data-target="#myModal" class="dropdown-items" ><i class="material-icons icon-align">add</i>Add</li>
               <li class="dropdown-items"><i class="material-icons icon-align">playlist_add</i>Import</li>
             </ul>
         </div>
@@ -122,12 +123,15 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
         </tr>
       </table> -->
+      <div *ngIf="showhide">
+        This is a test
+      </div>
 
       <div class="table-responsive">
         <table class="table">
           <thead>
             <tr>
-              <th><input type="checkbox"></th>
+              <th><mat-checkbox></mat-checkbox></th>
               <th scope="col">Actions</th>
               <th scope="col">Status</th>
               <!-- <th scope="col">Reviews</th> -->
@@ -142,21 +146,21 @@
           <tbody>
             <tr *ngFor="let asset of assets | search : searchKeyword; let in = index">
               <!-- <th scope="row">1</th> -->
-              <td><input type="checkbox"></td>
+              <td><mat-checkbox  type="checkbox" (click)="showhide = true"></mat-checkbox></td>
               <td>
                 <i class="material-icons btn" id="dropdownMenuButton" data-toggle="dropdown">menu</i>
                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <li class="dropdown-item"><i class="material-icons menu-dropdown">edit</i>Edit</li>
+                    <li class="dropdown-item" (click)="edit(asset)" data-toggle="modal" data-target="#myEditModal"><i class="material-icons menu-dropdown">edit</i>Edit</li>
                     <li class="dropdown-item"><i class="material-icons menu-dropdown">history</i>History</li>
-                    <li class="dropdown-item" routerLink="/asset" (click)="delete(asset)"><i class="material-icons menu-dropdown">delete</i>Delete</li>
+                    <li class="dropdown-item" (click)="delete(asset)"><i class="material-icons menu-dropdown">delete</i>Delete</li>
                     <li class="dropdown-item"><i class="material-icons menu-dropdown">share</i>Share</li>
                   </ul>
               </td>
               <td><p class="btn status-dropdown"><span class="status-dropdown-span">REVIEW EXPIRED<i class="material-icons">keyboard_arrow_down</i></span></p></td>
               <!-- <span class="status-dropdown-span">2<i class="material-icons">keyboard_arrow_down</i></span> -->
               <td>{{asset.unit}}</td>
-              <td>{{asset.name}}</td>
-              <td>{{asset.description}}</td>
+              <td data-toggle="tooltip" data-placement="top" title="{{asset.name}}">{{asset.name}}</td>
+              <td data-toggle="tooltip" data-placement="top" title="{{asset.description}}">{{asset.description}}</td>
               <td>{{asset.label}}</td>
               <td>{{asset.type}}</td>
               <td>{{asset.liability}}</td>
@@ -169,3 +173,366 @@
   </div>
 
 </div>
+
+<!-- Modal to add data -->
+
+<div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+  
+      <div class="modal-content">
+        <div class="modal-header">
+            <p>Add item (Asset Identification)</p>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          
+<!-- <mat-divider></mat-divider> -->
+<mat-tab-group mat-align-tabs="start" animationDuration="0ms">
+  <mat-tab label="General"> 
+    <form (submit)="onSubmit(postForm)" #postForm="ngForm" validate>
+    <div class="container my-custom-scrollbar">
+      <div class="row">
+        <div class="col-sm-12">
+          <br>
+            <label>Related Business Units</label>
+            <select class="form-control custom-select" name="unit" #unit="ngModel" ngModel>
+                <option value=""></option>
+                <option *ngFor="let unit of businessUnits" [ngValue]="unit">{{unit}}</option>
+            </select>
+            <small class="small">One or More Business Units (Organisation / Business Units) that are associated with this asset</small>
+          <br>
+          <br>
+          
+          <div>
+          <label>Name</label>
+          <input class="form-control" type="text" name="name" #name="ngModel" ngModel required autocomplete="off" rows="5" >
+          <small class="small">Name of the asset</small>
+          </div>
+          <br>
+    
+          <div>
+          <label>Description</label>
+          <textarea class="form-control" type="text" name="description" #description="ngModel" ngModel required autocomplete="off" rows="5" ></textarea>
+          <small class="small">OPTIONAL: Give a brief description for this asset</small>
+          </div>
+          <br>
+
+          <label>Label</label>
+          <select class="form-control custom-select" name="label" #label="ngModel" ngModel>
+              <option value="">Choose One</option>
+              <option *ngFor="let label of Label" [ngValue]="label">{{label}}</option>
+          </select>
+          <small class="small">OPTIONAL: Labels refer to the type of asset being created, typical examples are Confidential, Private, Etc. Labels are defined at Asset Management/Settings/Labels</small>
+          <br>
+          <br>
+
+          <label>Type</label>
+          <select class="form-control custom-select" name="type" #type="ngModel" ngModel>
+              <option value="">Data Asset</option>
+              <option *ngFor="let type of Type" [ngValue]="type">{{type}}</option>
+          </select>
+          <small class="small">Based on the type of asset eramba will suggest you possible threats and vulnerabilities (at the time you perform Risk Management).
+              If you are also interested in Data Asset Flows (Asset Management / Data Flows) you need to select "Data Asset"
+           </small>
+          <br>
+          <br>
+
+          <label>Assets</label>
+          <select class="form-control custom-select" name="asset" #asset="ngModel" ngModel>
+              <option value=""></option>
+              <option *ngFor="let asset of Assets" [ngValue]="asset">{{asset}}</option>
+          </select>
+          <small class="small">OPTIONAL: Select one or more related assets</small>
+          <br>
+          <br>
+
+          <label>Liabilities</label>
+          <select class="form-control custom-select" name="liability" #liability="ngModel" ngModel>
+              <option value=""></option>
+              <option *ngFor="let liability of Liabilities" [ngValue]="liability">{{liability}}</option>
+          </select>
+          <br>
+          <br>
+          <br>
+          </div>
+        </div>
+      </div>
+    <hr>
+    <div class="btn-div">
+      <!-- <button class="btn" style="margin: 10px" type="button"  (click)="onNoClick()">Close</button> -->
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <button class="btn btn-primary" style="margin: 10px" type="submit">Save</button>
+    </div>
+    </form>
+
+  </mat-tab>
+
+  <mat-tab label="Asset Owner"> 
+    <form validate>
+      <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <br>
+              <div>
+                <label>Owner</label>
+               <input type="text" class="form-control input-field" [(ngModel)]="newServerName">
+               <!-- <button type="button" class="col-1 btn add-btn btn-primary">Add</button> -->
+                <small class="small">Select one or more user accounts or groups that are associated as owners of this asset</small>
+              </div>
+              <br>
+        
+              <div>
+                <label>Guardian</label>
+                <input type="text" class="form-control input-field" [(ngModel)]="newServerName">
+                <!-- <button type="button" class="col-1 btn add-btn btn-primary">Add</button> -->
+                <small class="small">Select one or more user accounts or groups that are associated as guardians of this asset</small>
+              </div>
+              <br>
+        
+              <div>
+                <label>User</label>
+                <input type="text" class="form-control input-field" [(ngModel)]="newServerName">
+                <!-- <button type="button" class="col-1 btn add-btn btn-primary">Add</button> -->
+                <small class="small">Select one or more user accounts or groups that are associated as users of this asset</small>
+                </div>
+              <br>
+              
+            </div>
+          </div>
+      </div>
+        <hr>
+        <div class="btn-div">
+            <!-- <button class="btn" style="margin: 10px">Close</button> -->
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary" style="margin: 10px">Save</button>
+        </div>    
+    </form>
+  </mat-tab>
+  
+  <mat-tab label="Asset Classification">
+
+      <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+
+              <br>
+                <span>
+                    <button class="btn card dropdown-toggle classification-dropdown-toggle" type="button" data-toggle="dropdown">Classification: Availability
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu classification-dropdown">
+                      <li class="dropdown-items container"><input type="text" style="width: 100%" [(ngModel)]="searchKeyword"class="form-control"></li>
+                    </ul>
+                </span>
+
+                <br>
+                <span>
+                    <button class="btn card dropdown-toggle classification-dropdown-toggle" type="button" data-toggle="dropdown">Classification: Confidentiality
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu classification-dropdown">
+                        <li class="dropdown-items container"><input type="text" style="width: 100%" [(ngModel)]="searchKeyword"class="form-control"></li>
+                    </ul>
+                </span>
+
+                <br>
+                <div>
+                    <button class="btn card dropdown-toggle classification-dropdown-toggle" type="button" data-toggle="dropdown">Classification: Integrity
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu classification-dropdown">
+                        <li class="dropdown-items container"><input type="text" style="width: 100%" [(ngModel)]="searchKeyword"class="form-control"></li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="btn-div">
+            <button class="btn btn-primary" style="margin: 10px" >Save</button>
+            <!-- <button class="btn" style="margin: 10px" data-dismiss="modal" type="button">Close</button>  -->
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+  </mat-tab>
+</mat-tab-group>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal to edit data -->
+<div>
+    <div id="myEditModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <div class="modal-content">
+          <div class="modal-header">
+              <h3>Add item (Asset Identification)</h3>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+          </div>
+          <div class="modal-body">
+            
+  <mat-divider></mat-divider>
+  <mat-tab-group mat-align-tabs="start" animationDuration="0ms">
+    <mat-tab label="General"> 
+      <form (ngSubmit)="updateAsset()" #postEditForm="ngForm" validate>
+      <div class="container my-custom-scrollbar">
+        <div class="row">
+          <div class="col-sm-12">
+            <br>
+              <label>Related Business Units</label>
+              <select class="form-control custom-select" name="unit" #unit="ngModel" [(ngModel)]="editdata.unit" ngModel>
+                  <option value=""></option>
+                  <option *ngFor="let unit of businessUnits" [ngValue]="unit">{{unit}}</option>
+              </select>
+              <small>One or More Business Units (Organisation / Business Units) that are associated with this asset</small>
+            <br>
+            <br>
+            
+            <div>
+            <label>Name</label>
+            <input class="form-control" type="text" name="name" #name="ngModel" ngModel [(ngModel)]="editdata.name" required autocomplete="off" rows="5" >
+            <small class="small">Name of the asset</small>
+            </div>
+            <br>
+      
+            <div>
+            <label>Description</label>
+            <textarea class="form-control" type="text" name="description" #description="ngModel" ngModel [(ngModel)]="editdata.description" required autocomplete="off" rows="5" ></textarea>
+            <small class="small">OPTIONAL: Give a brief description for this asset</small>
+            </div>
+            <br>
+  
+            <label>Label</label>
+            <select class="form-control custom-select" name="label" #label="ngModel" ngModel [(ngModel)]="editdata.label">
+                <option value="">Choose One</option>
+                <option *ngFor="let label of Label" [ngValue]="label">{{label}}</option>
+            </select>
+            <small class="small">OPTIONAL: Labels refer to the type of asset being created, typical examples are Confidential, Private, Etc. Labels are defined at Asset Management/Settings/Labels</small>
+            <br>
+            <br>
+  
+            <label>Type</label>
+            <select class="form-control custom-select" name="type" #type="ngModel" ngModel [(ngModel)]="editdata.type">
+                <option value="">Data Asset</option>
+                <option *ngFor="let type of Type" [ngValue]="type">{{type}}</option>
+            </select>
+            <small class="small">Based on the type of asset eramba will suggest you possible threats and vulnerabilities (at the time you perform Risk Management).
+                If you are also interested in Data Asset Flows (Asset Management / Data Flows) you need to select "Data Asset"
+             </small>
+            <br>
+            <br>
+  
+            <label>Assets</label>
+            <select class="form-control custom-select" name="asset" #asset="ngModel" ngModel [(ngModel)]="editdata.asset">
+                <option value=""></option>
+                <option *ngFor="let asset of Assets" [ngValue]="asset">{{asset}}</option>
+            </select>
+            <small class="small">OPTIONAL: Select one or more related assets</small>
+            <br>
+            <br>
+  
+            <label>Liabilities</label>
+            <select class="form-control custom-select" name="liability" #liability="ngModel" ngModel [(ngModel)]="editdata.liability">
+                <option value=""></option>
+                <option *ngFor="let liability of Liabilities" [ngValue]="liability">{{liability}}</option>
+            </select>
+            <br>
+            <br>
+            <br>
+            </div>
+          </div>
+        </div>
+      <hr>
+      <div class="btn-div">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-primary" style="margin: 10px" type="submit">Save</button>
+      </div>
+      </form>
+  
+    </mat-tab>
+  
+    <mat-tab label="Asset Owner"> 
+    
+        <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+               
+                <div>
+                  <label>Owner</label>
+                  <span class="row"><input type="text" class="form-control input-field col-10" [(ngModel)]="newServerName"><button type="button" class="col-1 btn add-btn btn-primary">Add</button></span>
+                  <small class="small">Select one or more user accounts or groups that are associated as owners of this asset</small>
+                </div>
+                <br>
+          
+                <div>
+                  <label>Guardian</label>
+                  <span class="row"><input type="text" class="form-control input-field col-10" [(ngModel)]="newServerName"><button type="button" class="col-1 btn add-btn btn-primary">Add</button></span>
+                  <small class="small">Select one or more user accounts or groups that are associated as guardians of this asset</small>
+                </div>
+                <br>
+          
+                <div>
+                  <label>User</label>
+                  <span class="row"><input type="text" class="form-control input-field col-10" [(ngModel)]="newServerName"><button type="button" class="col-1 btn add-btn btn-primary">Add</button></span>
+                  <small class="small">Select one or more user accounts or groups that are associated as users of this asset</small>
+                  </div>
+                <br>
+                
+              </div>
+            </div>
+        </div>
+          <hr>
+          <div class="btn-div">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" style="margin: 10px" (click)="onAddServer($event)">Save</button>
+          </div>    
+    </mat-tab>
+    
+    <mat-tab label="Asset Classification">
+  
+        <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                  <div class="dropdown actions-dropdown">
+                      <button class="btn card dropdown-toggle assets-dropdown-toggle" type="button" data-toggle="dropdown">Classification: Availability
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu asset-dropdown">
+                        <li class="dropdown-items container"><input type="text" style="width: 100%" [(ngModel)]="searchKeyword"class="form-control"></li>
+                      </ul>
+                  </div>
+  
+                  <div class="dropdown actions-dropdown">
+                      <button class="btn card dropdown-toggle assets-dropdown-toggle" type="button" data-toggle="dropdown">Classification: Confidentiality
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu asset-dropdown">
+                          <li class="dropdown-items container"><input type="text" style="width: 100%" [(ngModel)]="searchKeyword"class="form-control"></li>
+                      </ul>
+                  </div>
+  
+                  <div class="dropdown actions-dropdown">
+                      <button class="btn card dropdown-toggle assets-dropdown-toggle" type="button" data-toggle="dropdown">Classification: Integrity
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu asset-dropdown">
+                          <li class="dropdown-items container"><input type="text" style="width: 100%" [(ngModel)]="searchKeyword"class="form-control"></li>
+                      </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="btn-div">
+              <button class="btn btn-primary" style="margin: 10px" (click)="onAddServer($event)">Save</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+    </mat-tab>
+  </mat-tab-group>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+  </div>

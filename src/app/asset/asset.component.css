@@ -187,3 +187,71 @@
     align-items: center;
 }
 
+.small{
+    color: grey;
+}
+
+.btn-div{
+    float: right;
+}
+
+#dropdownMenuButton{
+    font-size: 20px;
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+}
+
+th{
+    flex-direction: row;
+    align-items: center;
+    float: inline-start;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+td{
+    padding: 10px;
+    /* display: flex; */
+    flex-direction: row;
+    align-items: center;
+    float: inline-start;
+    font-size: 15px;
+    font-weight: 400;
+    margin-left: 3px;
+    height: 75px;
+}
+
+.modal-body{
+    padding: 0px;
+}
+
+.modal-header{
+    padding-bottom: 0px;
+}
+
+/* Important part */
+.modal-dialog{
+    overflow-y: initial !important;
+}
+.my-custom-scrollbar{
+    height: 700px;
+    overflow-y: auto;
+}
+
+.classification-dropdown-toggle{
+    width: 100%;
+    padding: 10px;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.caret{
+    float: right;
+}
+
+.classification-dropdown{
+    width: 100%;
+}
+
