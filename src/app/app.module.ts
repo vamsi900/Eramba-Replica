@@ -25,13 +25,17 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatSortModule} from '@angular/material/sort';
 import { SearchPipe } from './search.pipe';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MapComponent } from './map/map.component';
+// import { AgmCoreModule } from 'angular2-google-maps/core';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     AssetComponent,
     DialogExampleComponent,
-    SearchPipe
+    SearchPipe,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     FormsModule,
     MatTabsModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAUVoZThtLQhsp6ofRc2iMo88Xa7o8pqyU'
+    }),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

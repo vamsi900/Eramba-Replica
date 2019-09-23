@@ -1,0 +1,43 @@
+.main-div{
+    position: relative;
+    margin-left: 55px;
+    margin-top: 20px;
+}
+
+.header-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+agm-map {
+    height: 800px;
+    width: 800px;
+    float: right;
+    margin-left: 5px;
+}
+
+.cards-list{
+    top:20%;
+    left: 1%;
+    position: relative;
+    max-width: 95%;
+}
+
+
+.card{
+    padding: 5px;
+}
+
+.card:hover{
+    border: 2px solid black;
+}
+
+.search-bar{
+    width: 300px;
+}
+
+

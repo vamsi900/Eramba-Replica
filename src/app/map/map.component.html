@@ -1,0 +1,43 @@
+<div class="main-div">
+  <div class="header-div">
+    <input class="form-control search-bar" placeholder="Search" type="text">
+    <button (click)="toggle()" id="bt">
+        {{buttonName}}
+    </button>
+  </div>
+  <hr>
+    <ng-container *ngIf="show">
+        <agm-map
+      [latitude]="lat" 
+      [longitude]="lng" 
+      [zoom]="zoom" 
+      [disableDefaultUI]=false 
+      [zoomControl]="false"
+      (mapClick)="mapClicked($event)">
+      
+    <agm-marker 
+      *ngFor="let restaurant of restaurants; let i = index"
+      (markerClick)="clickedMarker(restaurant, i)"
+      [latitude]="restaurant.lat" 
+      [longitude]="restaurant.lng"
+      [markerDraggable]="restaurant.draggable"
+      (dragEnd)="markerDragEnd(restaurant, $event)">
+  
+      <agm-info-window>
+        <strong>{{restaurant.name}}</strong>
+        <strong>{{restaurant.cost}}</strong>
+        <strong>{{restaurant.address}}</strong>
+      </agm-info-window>
+  
+    </agm-marker>
+    </agm-map>
+    </ng-container>
+  
+    <div class="row cards-list">
+      <div class="card col-4" *ngFor="let restaurant of restaurants">
+        <p>Name: {{restaurant.name}}</p>
+        <p>Cost for two: {{restaurant.cost}}</p>
+        <p>Address: {{restaurant.address}}</p>
+      </div>
+    </div>
+</div>

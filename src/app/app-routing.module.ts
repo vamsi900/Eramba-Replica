@@ -3,13 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { AssetComponent } from './asset/asset.component';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { AppComponent } from './app.component';
+import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
   {path:'**', redirectTo:"appcomponent", pathMatch:"full"},
   {path:'asset', component:AssetComponent},
   {path:'', redirectTo:"appcomponent", pathMatch:"full"},
   {path:'dialog', component:DialogExampleComponent},
-  {path: 'appcomponenet', component: AppComponent}
+  {path: 'appcomponenet', component: AppComponent},
+  { path: 'map', component: MapComponent}
 ];
 
 @NgModule({
