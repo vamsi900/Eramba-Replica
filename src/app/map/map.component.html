@@ -1,6 +1,6 @@
 <div class="main-div">
   <div class="header-div">
-    <input class="form-control search-bar" placeholder="Search" type="text">
+    <input class="form-control search-bar" placeholder="Search" type="text" [(ngModel)]="searchKeyword">
     <button (click)="toggle()" id="bt">
         {{buttonName}}
     </button>
@@ -16,8 +16,8 @@
       (mapClick)="mapClicked($event)">
       
     <agm-marker 
-      *ngFor="let restaurant of restaurants; let i = index"
-      (markerClick)="clickedMarker(restaurant, i)"
+      *ngFor="let restaurant of restaurants | search : searchKeyword; let in = index"
+      (markerClick)="clickedMarker(restaurant, in)"
       [latitude]="restaurant.lat" 
       [longitude]="restaurant.lng"
       [markerDraggable]="restaurant.draggable"
@@ -34,7 +34,7 @@
     </ng-container>
   
     <div class="row cards-list">
-      <div class="card col-4" *ngFor="let restaurant of restaurants">
+      <div class="card col-4" *ngFor="let restaurant of restaurants | search : searchKeyword; let in = index">
         <p>Name: {{restaurant.name}}</p>
         <p>Cost for two: {{restaurant.cost}}</p>
         <p>Address: {{restaurant.address}}</p>

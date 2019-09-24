@@ -1,13 +1,10 @@
-import { Component, OnInit, EventEmitter, ViewChild  } from '@angular/core';
-import {SelectionModel} from '@angular/cdk/collections';
-import {MatTableDataSource} from '@angular/material';
-import { MatDialog}from '@angular/material';
-import{Subscription} from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 import {Asset} from './../asset.model';
 import { Router } from '@angular/router';
-import { NgForm, FormBuilder } from '@angular/forms';
-import { FormControl, FormGroup } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

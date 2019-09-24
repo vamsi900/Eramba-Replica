@@ -34,7 +34,7 @@ router.get('/getAsset', function(req, res,){
     });
 
 router.put('/editAsset', function(req ,res ,next){
-    console.log('request',req.body);
+    // console.log('request',req.body);
     Asset.update({_id:req.body._id}, req.body ,{new:true},function (err,data){
         if(err){
             res.json(err);
