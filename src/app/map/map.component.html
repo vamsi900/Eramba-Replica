@@ -7,7 +7,36 @@
   </div>
   <hr>
     <ng-container *ngIf="show">
-        <agm-map
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Add New Location</h3>
+            </div>
+            <div class="panel-body">
+              <form (submit)="addMarker()" >
+                <label>Location Name</label>
+                <input type="text" [(ngModel)]="markerName" name="markerName">
+
+                <label>Latitude</label>
+                <input type="text" [(ngModel)]="markerLat" name="markerLat">
+
+                <label>Longitude</label>
+                <input type="text" [(ngModel)]="markerLng" name="markerLng">
+
+                <label>Draggable</label>
+                <select type="text" [(ngModel)]="markerDraggable" name="markerDraggable">
+                  <option value="no">No</option>
+                  <option value="yes">Yes</option>
+                </select>
+                <input type="submit" value="Map It!!">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <agm-map
       [latitude]="lat" 
       [longitude]="lng" 
       [zoom]="zoom" 
@@ -24,6 +53,7 @@
       (dragEnd)="markerDragEnd(restaurant, $event)">
   
       <agm-info-window>
+        <strong *ngFor="let x of restaurant.images"><img src="{{x.img}}"></strong>
         <strong>{{restaurant.name}}</strong>
         <strong>{{restaurant.cost}}</strong>
         <strong>{{restaurant.address}}</strong>
@@ -34,7 +64,28 @@
     </ng-container>
   
     <div class="row cards-list">
+      
       <div class="card col-4" *ngFor="let restaurant of restaurants | search : searchKeyword; let in = index">
+          <!-- <div *ngFor="let x of restaurant.images" class="col-6">
+              <img src="{{x.img}}">
+          </div> -->
+
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" *ngFor="let x of restaurant.images">
+                <img src="{{x.img}}" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
         <p>Name: {{restaurant.name}}</p>
         <p>Cost for two: {{restaurant.cost}}</p>
         <p>Address: {{restaurant.address}}</p>

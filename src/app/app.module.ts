@@ -17,7 +17,6 @@ import {
          MatDialogModule,
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
-import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
@@ -28,12 +27,13 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { MapComponent } from './map/map.component';
 // import { AgmCoreModule } from 'angular2-google-maps/core';
 import { AgmCoreModule } from '@agm/core';
-
+import { SliderModule } from 'angular-image-slider';
+import {SlideshowModule} from 'ng-simple-slideshow';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 @NgModule({
   declarations: [
     AppComponent,
     AssetComponent,
-    DialogExampleComponent,
     SearchPipe,
     MapComponent
   ],
@@ -54,6 +54,9 @@ import { AgmCoreModule } from '@agm/core';
     MatTabsModule,
     HttpClientModule,
     MatTooltipModule,
+    SliderModule,
+    SlideshowModule,
+    Ng2CarouselamosModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAUVoZThtLQhsp6ofRc2iMo88Xa7o8pqyU'
     }),

@@ -6,6 +6,13 @@ export let RESTAURANTS = [
         lat: 17.4465535,
         lng: 78.3842897,
         draggable: true,
+        images: [
+            {img: "./assets/flechazo.jpeg"},
+            {img: "./assets/wingster.jpg"},
+            {img: "./assets/dosagaadi.jpg"},
+            {img: "./assets/mainlandchina.jpg"},
+            {img: "./assets/palamuru.jpg"},
+        ]
     },
     {
         name: 'The Grand Trunk Road Restaurant',
@@ -14,6 +21,13 @@ export let RESTAURANTS = [
         lat: 17.4518244,
         lng: 78.3855326,
         draggable: false,
+        images: [
+            {img: "./assets/flechazo.jpeg"},
+            {img: "./assets/palamuru.jpg"},
+            {img: "./assets/wingster.jpg"},
+            {img: "./assets/mainlandchina.jpg"},
+            {img: "./assets/dosagaadi.jpg"},
+        ]
     },
     {
         name: 'Istah Shawarmas - Madhapur',
@@ -22,6 +36,13 @@ export let RESTAURANTS = [
         lat: 17.4536484,
         lng: 78.3888171,
         draggable: true,
+        images: [
+            {img: "./assets/palamuru.jpg"},
+            {img: "./assets/wingster.jpg"},
+            {img: "./assets/dosagaadi.jpg"},
+            {img: "./assets/mainlandchina.jpg"},
+            {img: "./assets/flechazo.jpeg"},
+        ]
     },
     {
         name: 'Palamuru Grill',
@@ -30,6 +51,13 @@ export let RESTAURANTS = [
         lat: 17.4522323,
         lng: 78.384673,
         draggable: true,
+        images: [
+            {img: "./assets/flechazo.jpeg"},
+            {img: "./assets/palamuru.jpg"},
+            {img: "./assets/wingster.jpg"},
+            {img: "./assets/dosagaadi.jpg"},
+            {img: "./assets/mainlandchina.jpg"},
+        ]
     },
     {
         name: 'Annapurna Mess',
@@ -38,6 +66,13 @@ export let RESTAURANTS = [
         lat: 17.4529135,
         lng: 78.3839213,
         draggable: true,
+        images: [
+            {img: "./assets/flechazo.jpeg"},
+            {img: "./assets/palamuru.jpg"},
+            {img: "./assets/wingster.jpg"},
+            {img: "./assets/dosagaadi.jpg"},
+            {img: "./assets/mainlandchina.jpg"},
+        ]
     },
     {
         name: 'Mainland China',
@@ -46,6 +81,13 @@ export let RESTAURANTS = [
         lat: 17.4526939,
         lng: 78.3805644,
         draggable: false,
+        images: [
+            {img: "./assets/flechazo.jpeg"},
+            {img: "./assets/palamuru.jpg"},
+            {img: "./assets/wingster.jpg"},
+            {img: "./assets/dosagaadi.jpg"},
+            {img: "./assets/mainlandchina.jpg"},
+        ]
     },
     {
         name: 'Dosa Gaadi',
@@ -54,6 +96,13 @@ export let RESTAURANTS = [
         lat: 17.4505336,
         lng: 78.3915132,
         draggable: false,
+        images: [
+            {img: "./assets/flechazo.jpeg"},
+            {img: "./assets/palamuru.jpg"},
+            {img: "./assets/wingster.jpg"},
+            {img: "./assets/dosagaadi.jpg"},
+            {img: "./assets/mainlandchina.jpg"},
+        ]
     },
     {
         name: 'The Wingster',
@@ -62,6 +111,13 @@ export let RESTAURANTS = [
         lat: 17.4515704,
         lng: 78.3940176,
         draggable: true,
+        images: [
+            {img: "./assets/flechazo.jpeg"},
+            {img: "./assets/palamuru.jpg"},
+            {img: "./assets/wingster.jpg"},
+            {img: "./assets/dosagaadi.jpg"},
+            {img: "./assets/mainlandchina.jpg"},
+        ]
     },
     {
         name: 'STR8UP KITCHEN & BAR',
@@ -70,6 +126,13 @@ export let RESTAURANTS = [
         lat: 17.4522419,
         lng: 78.3906522,
         draggable: true,
+        images: [
+            {img: "./assets/flechazo.jpeg"},
+            {img: "./assets/palamuru.jpg"},
+            {img: "./assets/wingster.jpg"},
+            {img: "./assets/dosagaadi.jpg"},
+            {img: "./assets/mainlandchina.jpg"},
+        ]
     },
     {
         name: 'On The Run Multicuisine Restaurant',
@@ -78,5 +141,12 @@ export let RESTAURANTS = [
         lat: 17.4519577,
         lng: 78.3890535,
         draggable: false,
+        images: [
+            {img: "./assets/flechazo.jpeg"},
+            {img: "./assets/palamuru.jpg"},
+            {img: "./assets/wingster.jpg"},
+            {img: "./assets/dosagaadi.jpg"},
+            {img: "./assets/mainlandchina.jpg"},
+        ]
     }
 ]

@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { MapService } from '../map.service';
 import { restaurant } from '../restaurant.model';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 //Marker
 interface marker{
   name?: string;
+  cost: any;
+  address: any;
   lat: number;
   lng: number;
   draggable: boolean;
+  images: any;
 }
 
 @Component({
@@ -16,10 +20,15 @@ interface marker{
 })
 export class MapComponent implements OnInit {
   //zoom level
-  zoom: number = 14;
+  zoom: number = 15;
   //start position
   lat: number = 17.450654;
   lng: number = 78.3751234;
+
+  markerName: string;
+  markerLat: string;
+  markerLng: string;
+  markerDraggable: string;
   //Markers
   // markers: marker[] = [
   //   {
@@ -46,7 +55,6 @@ export class MapComponent implements OnInit {
   public buttonName:any = 'Show Map';
 
   constructor(public mapService: MapService ) { }
-
   ngOnInit() {
     this.restaurants = this.mapService.getAll();
   }
@@ -71,7 +79,8 @@ export class MapComponent implements OnInit {
       address: 'Unknown',
       lat: $event.coords.lat,
       lng: $event.coords.lng,
-      draggable: false
+      draggable: false,
+      images: 0,
     }
     this.restaurants.push(newMarker);
   }
@@ -81,12 +90,33 @@ export class MapComponent implements OnInit {
 
     var updMarker = {
       name: restaurant.name,
+      cost: 0,
+      address: 'Unknown',
       lat: parseFloat(restaurant.lat),
       lng: parseFloat(restaurant.lng),
       draggable: false
     }
     var newLat = $event.coords.lat;
     var newLng = $event.coords.lng;
+  }
+
+  addMarker(){
+    console.log("Adding marker");
+    if(this.markerDraggable == 'yes'){
+      var isDraggable = true;
+    } else {
+      var isDraggable = false;
+    }
+    var newMarker = {
+      name: this.markerName,
+      cost: 0,
+      address: 'unknown',
+      lat: parseFloat(this.markerLat),
+      lng: parseFloat(this.markerLng),
+      draggable: isDraggable,
+      images: 0,
+    }
+    this.restaurants.push(newMarker);
   }
 
 }
