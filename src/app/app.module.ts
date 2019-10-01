@@ -30,6 +30,7 @@ import { AgmCoreModule } from '@agm/core';
 import { SliderModule } from 'angular-image-slider';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,9 +58,12 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
     SliderModule,
     SlideshowModule,
     Ng2CarouselamosModule,
+    
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAUVoZThtLQhsp6ofRc2iMo88Xa7o8pqyU'
     }),
+    
+    CarouselModule.forRoot(),
 
   ],
   providers: [],

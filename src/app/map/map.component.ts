@@ -114,7 +114,7 @@ export class MapComponent implements OnInit {
       lat: parseFloat(this.markerLat),
       lng: parseFloat(this.markerLng),
       draggable: isDraggable,
-      images: 0,
+      images: 0, 
     }
     this.restaurants.push(newMarker);
   }
