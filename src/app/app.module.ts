@@ -58,13 +58,10 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     SliderModule,
     SlideshowModule,
     Ng2CarouselamosModule,
-    
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAUVoZThtLQhsp6ofRc2iMo88Xa7o8pqyU'
     }),
-    
     CarouselModule.forRoot(),
-
   ],
   providers: [],
   bootstrap: [AppComponent]
