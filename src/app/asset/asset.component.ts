@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
-import {Asset} from './../asset.model';
+import { Asset } from './../asset.model';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -36,7 +35,7 @@ export class AssetComponent implements OnInit {
   //   liability: new FormControl('')
   // });
 
-  constructor(public dialog:MatDialog, private dataservice: DataService, private router:Router, private http: HttpClient) { }
+  constructor(private dataservice: DataService, private router:Router, private http: HttpClient) { }
 
   ngOnInit(){
     // this.assets = this.dataservice.getAssets();

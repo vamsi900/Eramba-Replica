@@ -23,7 +23,7 @@ router.post('/postAsset', function(req, res, next) {
 
 router.get('/getAsset', function(req, res,){ 
 
-    Asset.find({},function (err,data){    
+    Asset.find({},function (err,data){
         if (err) {
             res.json({err});
             }
