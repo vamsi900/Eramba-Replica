@@ -8,4 +8,23 @@
     [chartType]="barChartType">
   </canvas>
   </div>
+
+  <div>
+    <p id="para">Some text here</p>
+    <button (click)="changeColor('blue');">blue</button>
+    <button (click)="changeColor('red');">red</button>
+  </div>
+
+  <div>
+    <google-chart #chart
+    [title]="title"
+    [type]="type"
+    [data]="data"
+    [columnNames]="columnNames"
+    [options]="options"
+    [width]="width"
+    [height]="height">
+  </google-chart>
+  </div>
+
 </div>

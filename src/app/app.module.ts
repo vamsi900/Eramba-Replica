@@ -34,6 +34,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ChartsComponent } from './charts/charts.component';
 // import { ChartsModule } from 'ng2-charts';
 import { ChartsModule } from 'ng2-charts-x';
+import { GoogleChartsModule } from 'angular-google-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,7 @@ import { ChartsModule } from 'ng2-charts-x';
     HttpClientModule,
     MatTooltipModule,
     SliderModule,
-    SlideshowModule,
+    SlideshowModule,GoogleChartsModule,
     Ng2CarouselamosModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCGAGfplQRLPq8PL2I1kgGNuBio9s3nd8M'
