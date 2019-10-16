@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {GoogleCharts} from 'google-charts';
 
 @Component({
   selector: 'app-charts',
@@ -43,7 +42,7 @@ export class ChartsComponent implements OnInit {
 //   colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'], is3D: true
 // };
 
-title = 'Browser market shares at a specific website, 2014';
+// title = 'Browser market shares at a specific website, 2014';
    type = 'PieChart';
    data = [
       ['Firefox', 45.0],
@@ -56,6 +55,7 @@ title = 'Browser market shares at a specific website, 2014';
    columnNames = ['Browser', 'Percentage'];
    options = {    
     //  is3D: true
+    pieHole: 0.4,
    };
    width = 550;
    height = 400;
